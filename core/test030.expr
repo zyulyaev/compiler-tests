@@ -1,27 +1,25 @@
-fun printMatrix (M)
+fun printMatrix (M: [[Int]]): None
 begin
   rs := arrlen (M);
-  if rs == 0 
+  if rs == 0
      then return 0
   fi;
   cs := arrlen (M[0]);
-  
+
   for i := 0, i < rs, i := i+1 do
     Mi := M[i];
     for j := 0, j < cs, j := j+1 do
       write (Mi[j])
     od
   od;
-
-  return 0
 end
 
-fun readMatrix ()
+fun readMatrix (): [[Int]]
 begin
   rs := read ();
   cs := read ();
 
-  M := Arrmake (rs, {});
+  M := Arrmake (rs, {} as [Int]);
 
   for i := 0, i < rs, i := i+1 do
     Mi := arrmake (cs, 0);
@@ -33,7 +31,7 @@ begin
   return M
 end
 
-fun multiplyMatrix (A, B)
+fun multiplyMatrix (A: [[Int]], B: [[Int]]): [[Int]]
 begin
   rsA := arrlen (A);
   csA := arrlen (A[0]);
@@ -41,9 +39,9 @@ begin
   rsB := arrlen (B);
   csB := arrlen (B[0]);
 
-  if rsA == csB && csA == rsB 
-  then 
-    AB := Arrmake (rsA, {});
+  if rsA == csB && csA == rsB
+  then
+    AB := Arrmake (rsA, {} as [Int]);
     for i := 0, i < rsA, i := i+1 do
       ABi := arrmake (csB, 0);
       Ai  := A[i];

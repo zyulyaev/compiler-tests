@@ -1,13 +1,12 @@
-fun printArray (A)
+fun printArray (A: [Int]): None
 begin
   for i:=0, i<arrlen (A), i:=i+1
   do
     write (A[i])
   od;
-  return 0
 end
 
-fun readArray (A) 
+fun readArray (A: [Int]): [Int]
 begin
   for i:=0, i<arrlen (A), i:=i+1
   do

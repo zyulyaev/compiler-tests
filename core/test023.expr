@@ -1,8 +1,10 @@
-fun a(x, y) begin
+fun a(x: Int, y: Int): Int
+begin
   return x + y
 end
 
-fun b(y) begin
+fun b(y: Int): Int
+begin
   y := 5;
   write(y);
   return y

@@ -1,4 +1,4 @@
-fun fact (n) 
+fun fact (n: Int): Int
 begin
   if n < 2 
      then return 1

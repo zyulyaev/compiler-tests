@@ -1,4 +1,5 @@
-fun fib (n) begin
+fun fib (n: Int): Int
+begin
   if n <= 2 
      then return 1 
      else return fib (n-1) + fib (n-2)

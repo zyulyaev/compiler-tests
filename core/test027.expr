@@ -1,10 +1,9 @@
-fun printStr (S)
+fun printStr (S: String): None
 begin
   for i := 0, i < strlen (S), i := i+1
   do
     write (strget (S, i))
   od;
-  return 0
 end
 
 S := "I will remember April.";

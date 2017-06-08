@@ -2,7 +2,7 @@ fun printMatrix (M: [[Int]]): None
 begin
   rs := arrlen (M);
   if rs == 0
-     then return 0
+     then return {}
   fi;
   cs := arrlen (M[0]);
 

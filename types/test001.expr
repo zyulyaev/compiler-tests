@@ -71,7 +71,7 @@ impl List for ArrayList {
 fun arrayList(): ArrayList
 begin
     return ArrayList {
-        buffer: arrmake(16, 0),
+        buffer: arrmake(4, 0),
         size: 0
     }
 end

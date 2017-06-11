@@ -1,0 +1,29 @@
+fun printArray(a: [Int]): None
+begin
+    for i := 0, i < arrlen(a), i := i + 1 do
+        write(a[i])
+    od
+end
+fun printArrays(a: [[Int]]): None
+begin
+    for i := 0, i < arrlen(a), i := i + 1 do
+        printArray(a[i])
+    od
+end
+
+printArray([1, 2, 3]);
+
+write(0);
+
+a := Arrmake(3, [1, 2, 3]);
+printArrays(a);
+
+write(0);
+
+a[1][1] := 5;
+printArrays(a);
+
+write(0);
+
+a[2] := [10, 9, 8];
+printArrays(a);

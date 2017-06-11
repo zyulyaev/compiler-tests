@@ -16,12 +16,12 @@ class Iterator {
 impl Iterator for ListIterator {
     fun hasNext(): Int
     begin
-        return (this.list).length() > this.next
+        return this.list.length() > this.next
     end
 
     fun next(): Int
     begin
-        result := (this.list).get(this.next);
+        result := this.list.get(this.next);
         this.next := this.next + 1;
         return result
     end

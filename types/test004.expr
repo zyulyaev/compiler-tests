@@ -1,0 +1,46 @@
+class P {
+    fun print(): None
+}
+
+data A {}
+
+impl P for A {
+    fun print(): None
+    begin
+        write(1)
+    end
+}
+
+fun printA(a: [A]): None
+begin
+    for i := 0, i < arrlen(a), i := i + 1 do
+        a[i].print()
+    od
+end
+
+fun printAA(aa: [[A]]): None
+begin
+    for i := 0, i < arrlen(aa), i := i + 1 do
+        printA(aa[i])
+    od
+end
+
+a := Arrmake(2, A{});
+printA(a);
+write(0);
+a[0] := A{};
+printA(a);
+write(0);
+a[1] := A{};
+printA(a);
+write(0);
+
+aa := Arrmake(2, a);
+printAA(aa);
+write(0);
+aa[0] := [A{}, A{}];
+printAA(aa);
+write(0);
+aa[1] := [A{}, A{}];
+printAA(aa);
+write(0);

@@ -1,0 +1,14 @@
+data A {
+    value: Int
+}
+
+a := A {
+    value: 10
+};
+a := a;
+a.value := a.value;
+
+b := [A { value: 20 }];
+b := b;
+b[0] := b[0];
+b[0].value := b[0].value;

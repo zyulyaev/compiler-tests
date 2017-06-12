@@ -1,0 +1,103 @@
+class P {
+    fun print(): None
+}
+
+data A {}
+data B {}
+
+impl P for A {
+    fun print(): None
+    begin
+        write(1)
+    end
+}
+
+impl P for B {
+    fun print(): None
+    begin
+        write(2)
+    end
+}
+
+fun printP(p: [P]): None
+begin
+    for i := 0, i < arrlen(p), i := i + 1 do
+       p[i].print()
+    od
+end
+
+fun printPP(pp: [[P]]): None
+begin
+    for i := 0, i < arrlen(pp), i := i + 1 do
+        printP(pp[i])
+    od
+end
+
+fun printPPP(ppp: [[[P]]]): None
+begin
+    for i := 0, i < arrlen(ppp), i := i + 1 do
+        printPP(ppp[i])
+    od
+end
+
+fun printA(a: [A]): None
+begin
+    for i := 0, i < arrlen(a), i := i + 1 do
+        a[i].print()
+    od
+end
+
+fun printAA(aa: [[A]]): None
+begin
+    for i := 0, i < arrlen(aa), i := i + 1 do
+        printA(aa[i])
+    od
+end
+
+fun printAAA(aaa: [[[A]]]): None
+begin
+    for i := 0, i < arrlen(aaa), i := i + 1 do
+        printAA(aaa[i])
+    od
+end
+
+a := [A{}, A{}];
+printA(a);
+write(0);
+printA([A { }, A { }]);
+write(0);
+
+aa := [a, a];
+printAA(aa);
+write(0);
+printAA([a, a]);
+write(0);
+
+aaa := [aa, aa];
+printAAA(aaa);
+write(0);
+printAAA([aa, aa]);
+write(0);
+
+p := [A{} as P, B{} as P];
+printP(p);
+write(0);
+printP([A{} as P, B{} as P]);
+write(0);
+
+pp := [p, p];
+printPP(pp);
+write(0);
+printPP([p, p]);
+write(0);
+
+ppp := [pp, pp];
+printPPP(ppp);
+write(0);
+printPPP([pp, pp]);
+write(0);
+
+printAA([[A{}, A{}], [A{}]]);
+write(0);
+printPP([[A{} as P, B{} as P], [B{} as P]]);
+write(0);

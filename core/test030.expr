@@ -2,7 +2,7 @@ fun printMatrix (M: [[Int]]): None
 begin
   rs := arrlen (M);
   if rs == 0
-     then return {}
+     then return none
   fi;
   cs := arrlen (M[0]);
 
@@ -19,7 +19,7 @@ begin
   rs := read ();
   cs := read ();
 
-  M := Arrmake (rs, {} as [Int]);
+  M := Arrmake (rs, none as [Int]);
 
   for i := 0, i < rs, i := i+1 do
     Mi := arrmake (cs, 0);
@@ -41,7 +41,7 @@ begin
 
   if rsA == csB && csA == rsB
   then
-    AB := Arrmake (rsA, {} as [Int]);
+    AB := Arrmake (rsA, none as [Int]);
     for i := 0, i < rsA, i := i+1 do
       ABi := arrmake (csB, 0);
       Ai  := A[i];
@@ -55,7 +55,7 @@ begin
       AB[i] := ABi
     od;
     return AB       
-  else return {}   
+  else return none
   fi 
 end
 

@@ -1,0 +1,126 @@
+data ArrayList {
+    buffer: [Int],
+    size: Int
+}
+
+data ArrayListIterator {
+    list: ArrayList,
+    next: Int
+}
+
+class Iterator {
+    fun hasNext(): Int
+    fun next(): Int
+}
+
+impl Iterator for ArrayListIterator {
+    fun hasNext(): Int
+    begin
+        return this.list.size > this.next
+    end
+
+    fun next(): Int
+    begin
+        this.next := this.next + 1;
+        return this.list.buffer[this.next - 1]
+    end
+}
+
+class Collection {
+    fun iterator(): Iterator
+
+    fun contains(value: Int): Int
+
+    fun size(): Int
+}
+
+class Stack extends Collection {
+    fun push(value: Int): None
+
+    fun pop(): Int
+}
+
+impl Stack for ArrayList {
+    fun push(value: Int): None
+    begin
+        size := this.size;
+        if size == arrlen(this.buffer) then
+            prev := this.buffer;
+            this.buffer := arrmake(this.size * 2, 0);
+            for i := 0, i < size, i := i + 1 do
+                this.buffer[i] := prev[i]
+            od
+        fi;
+        this.buffer[size] := value;
+        this.size := size + 1
+    end
+
+    fun pop(): Int
+    begin
+        this.size := this.size - 1;
+        return this.buffer[this.size]
+    end
+}
+
+impl Collection for ArrayList {
+    fun iterator(): Iterator
+    begin
+        return ArrayListIterator {
+            list: this,
+            next: 0
+        }
+    end
+
+    fun contains(value: Int): Int
+    begin
+        for i := 0, i < this.size, i := i + 1 do
+            if this.buffer[i] == value then
+                return 1
+            fi
+        od;
+        return 0
+    end
+
+    fun size(): Int
+    begin
+        return this.size
+    end
+}
+
+fun arrayList(): ArrayList
+begin
+    return ArrayList {
+        buffer: arrmake(16, 0),
+        size: 0
+    }
+end
+
+fun printCollection(c: Collection): None
+begin
+    i := c.iterator();
+    while i.hasNext() do
+        write(i.next())
+    od
+end
+
+list := arrayList();
+list.push(10);
+list.push(20);
+list.push(30);
+printCollection(list);
+write(list.pop());
+write(list.size());
+write(list.contains(10));
+write(list.contains(50));
+write(0);
+
+stack := arrayList() as Stack;
+stack.push(40);
+stack.push(50);
+stack.push(60);
+printCollection(stack);
+write(stack.pop());
+write(stack.size());
+write(stack.contains(10));
+write(stack.contains(50));
+write(0);
